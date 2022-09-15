@@ -1,0 +1,68 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Packages
+```{r}
+library(haven) # Read SAS data
+
+
+
+
+
+library(ggplot2)
+library(dplyr)
+library(gt)
+#library(tplyr)
+
+```
+Import
+```{r}
+library(haven)
+adae <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adae.sas7bdat", 
+    NULL)
+View(adae)
+
+library(haven)
+adsl <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adsl.sas7bdat", 
+    NULL)
+View(adsl)
+adsl
+```
+
+Prep data
+```{r}
+adae %>%
+filter(!(AEREL %in% "")) %>%
+ggplot() +
+  aes(x = AESEV, fill = TRTA) +
+  geom_bar() +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
+```
+Viz
+```{r}
+
+```
+table
+```{r}
+
+```
+
+
+
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
